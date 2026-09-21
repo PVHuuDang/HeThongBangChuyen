@@ -12,6 +12,9 @@ void webServerInit() {
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
     }
+    Serial.println("\nKet noi WiFi thanh cong!");
+    Serial.print("Dia chi IP (HTTP) cua ban la: ");
+    Serial.println(WiFi.localIP()); // Dòng này cực kỳ quan trọng để lấy IP!
 
     server.on("/gui", HTTP_GET, [](AsyncWebServerRequest *request){
         if (!isSystemIdle()) {
